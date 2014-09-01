@@ -5,8 +5,7 @@ forward_ports:
   - {guest: 80, host: 8000}
 
 digital_ocean:
-  client_id: <your digital ocean client id>
-  api_key:   <your digital ocean api key>
-  image:     Ubuntu 14.04 x32
-  region:    Amsterdam 1
-  size:      512MB # 1GB
+  toklen: <your digital ocean token>
+  image:  Ubuntu 14.04 x32
+  region: Amsterdam 1
+  size:   512MB # 1GB

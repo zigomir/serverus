@@ -22,11 +22,10 @@ Vagrant.configure('2') do |config|
     override.vm.box               = 'digital_ocean'
     override.vm.box_url           = 'https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
 
-    provider.client_id = CONF['digital_ocean']['client_id']
-    provider.api_key   = CONF['digital_ocean']['api_key']
-    provider.image     = CONF['digital_ocean']['image']
-    provider.region    = CONF['digital_ocean']['region']
-    provider.size      = CONF['digital_ocean']['size']
+    provider.token  = CONF['digital_ocean']['token']
+    provider.image  = CONF['digital_ocean']['image']
+    provider.region = CONF['digital_ocean']['region']
+    provider.size   = CONF['digital_ocean']['size']
   end
 
   config.vm.provision :ansible do |ansible|
