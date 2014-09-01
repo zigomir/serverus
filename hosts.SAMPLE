@@ -1,0 +1,5 @@
+[vagrant]
+192.168.50.4
+
+[production]
+your.prod.ip

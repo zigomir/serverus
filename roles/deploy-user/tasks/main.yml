@@ -1,0 +1,13 @@
+---
+- name: Add the deploy user
+  user: name=deployer
+        generate_ssh_key=yes ssh_key_bits=2048
+        home=/home/deployer
+        shell=/bin/bash
+
+- name: Set up authorized_keys for the deploy user
+  authorized_key: user=deployer
+                  state=present
+                  key="{{ item }}"
+  with_file:
+    - pubkey

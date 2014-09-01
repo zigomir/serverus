@@ -1,0 +1,39 @@
+- name: Install Postgresql Apt Repository
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ {{distro_codename}}-pgdg main'
+  tags: install_postgresql_repo
+
+- name: Install Postgresl Apt Repository Key
+  apt_key: id=ACCC4CF8 url=http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc state=present
+  tags: install_postgresql_repo_key
+
+- name: Install Postgresql package
+  apt: pkg={{ item }} state=latest install_recommends=yes update_cache=yes
+  with_items:
+    - postgresql-{{postgresql_version}}
+    - libpq-dev
+    - python-psycopg2
+    - postgresql-contrib
+  tags: install_postgresql
+
+- name: Setting Postgresql Client Authentication Configuration - pg_hba.conf
+  template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{postgresql_version}}/main/pg_hba.conf
+            owner=postgres group=postgres mode=0640
+  notify: reload postgresql
+  tags: setting_postgresql_pg_hba
+
+- name: Create Postgresql user for application
+  postgresql_user: name={{db_user}} password={{db_user_pass}} role_attr_flags={{db_user_roles}}
+  tags: create_pg_user
+  sudo_user: postgres
+
+- name: Create Postgresql database for application
+  postgresql_db: name={{db_name}} owner={{db_user}}
+  tags: create_pg_db
+  sudo_user: postgres
+
+- name: Alter postgresql database template for extension hstore
+  command: psql template1 -c 'create extension hstore;'
+  sudo: yes
+  sudo_user: postgres
+  ignore_errors: True
+  tags: setting_hstore_extension

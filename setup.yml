@@ -1,0 +1,23 @@
+---
+- hosts: vagrant
+  user: vagrant
+  sudo: yes
+  # uncomment for faster provisioning
+  gather_facts: False
+  vars:
+    - distro_codename: trusty
+    - domain: customerneeds.info
+    - root_dir: /home/deployer
+    - postgresql_version: "9.3"
+    - db_user: deployer
+    - db_user_pass: deployer
+    - db_user_roles: SUPERUSER
+    - db_name: db_production
+
+  roles:
+    - common
+    - deploy-user
+    - nginx
+    - ruby
+    - unicorn
+    - postgres

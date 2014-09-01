@@ -1,0 +1,10 @@
+# /etc/init/auth.conf
+start on virtual-filesystems
+stop on runlevel [06]
+
+setuid deployer
+setgid deployer
+
+pre-start exec {{root_dir}}/auth/current/bin/unicorn -D -c {{root_dir}}/auth/current/config/unicorn.rb --env production
+
+post-stop exec kill `cat {{root_dir}}/auth/shared/tmp/pids/unicorn.pid`

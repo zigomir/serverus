@@ -1,0 +1,5 @@
+- name: Setup API upstart service
+  template: src=api.conf.j2 dest=/etc/init/api.conf
+
+- name: Setup AUTH upstart service
+  template: src=auth.conf.j2 dest=/etc/init/auth.conf
