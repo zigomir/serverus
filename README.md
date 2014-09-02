@@ -12,6 +12,9 @@ vagrant up
 
 ## DigitalOcean
 
+You shouldn't have same SSH key already set on DigitalOcean. And be sure to generate API token with 
+read and write permissions.
+
 ```sh
 vagrant plugin install vagrant-digitalocean
 vagrant up --provider=digital_ocean

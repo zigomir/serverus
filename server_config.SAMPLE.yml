@@ -7,5 +7,5 @@ forward_ports:
 digital_ocean:
   toklen: <your digital ocean token>
   image:  Ubuntu 14.04 x32
-  region: Amsterdam 1
+  region: ams1
   size:   512MB # 1GB
