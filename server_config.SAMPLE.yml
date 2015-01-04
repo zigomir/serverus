@@ -2,7 +2,9 @@ name: serverus
 memory: 512
 private_ip: 192.168.50.4
 forward_ports:
-  - {guest: 80, host: 8000}
+  - { guest: 80, host: 8000 }
+shared_dires:
+  - { guest: '~/development/project', host: '/home/vagrant/project' }
 
 digital_ocean:
   toklen: <your digital ocean token>
