@@ -6,13 +6,14 @@ Build me servers; Run them on [clouds](https://www.youtube.com/watch?v=3acIH2PhM
 
 ```sh
 cp server_config.SAMPLE.yml server_config.yml
-vagrant up
+vagrant up --provider=virtualbox
+vagrant provision # if / when needed
 ```
 
 
 ## DigitalOcean
 
-You shouldn't have same SSH key already set on DigitalOcean. And be sure to generate auth token with 
+You shouldn't have same SSH key already set on DigitalOcean. And be sure to generate auth token with
 read and write permissions.
 
 ```sh
@@ -24,6 +25,13 @@ ansible-playbook -i hosts setup_digitalocean.yml
 ```
 
 ## Extra steps
+
+### Postgres
+
+```sh
+sudo su postgres
+psql
+```
 
 Be sure to re-install `bundler` and try to run `gem` cause executables might be referenced to `ruby1.9`.
 
@@ -51,7 +59,7 @@ tail -f api.log
 tail -f auth.log
 ```
 
-Be sure to comment this launch section out from mina's `deploy.rb` out for the first time. 
+Be sure to comment this launch section out from mina's `deploy.rb` out for the first time.
 Because there is no unicorn.rb script in config directory which is needed by upstart script
 
 As deployer user

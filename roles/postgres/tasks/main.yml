@@ -30,10 +30,3 @@
   postgresql_db: name={{db_name}} owner={{db_user}}
   tags: create_pg_db
   sudo_user: postgres
-
-- name: Alter postgresql database template for extension hstore
-  command: psql template1 -c 'create extension hstore;'
-  sudo: yes
-  sudo_user: postgres
-  ignore_errors: True
-  tags: setting_hstore_extension

@@ -1,10 +1,13 @@
 ---
-# Explore for packages at http://ppa.launchpad.net/brightbox/. For Ruby 2.1.2 I'll need to use ruby-ng-experimental branch
+# Explore for packages at https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng
 - name: Install PPA for latest Ruby version
-  apt_repository: repo=ppa:brightbox/ruby-ng-experimental state=present
+  apt_repository: repo=ppa:brightbox/ruby-ng state=present
 
 - name: Install Ruby package
   apt: pkg={{item}} state=latest update_cache=yes
   with_items:
-    - ruby2.1
-    - ruby2.1-dev
+    - ruby2.2
+    - ruby2.2-dev
+
+- name: Install Bundler
+  gem: name=bundler state=present user_install=no

@@ -6,7 +6,7 @@
   gather_facts: False
   vars:
     - distro_codename: trusty
-    - domain: customerneeds.info
+    - domain: vagra.nt
     - root_dir: /home/deployer
     - postgresql_version: "9.3"
     - db_user: deployer
