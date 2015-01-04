@@ -17,7 +17,7 @@ Create a file named `Vagrantfile` in your project's root directory
 ```ruby
 #!/usr/bin/ruby
 
-eval(File.open("#{Dir.home}/path/to/this/Vagrantfile").read)
+eval(File.open("#{Dir.home}/path/to/serverus/Vagrantfile").read)
 ```
 
 copy config yaml file
