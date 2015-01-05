@@ -4,8 +4,11 @@
   sudo: yes
   vars:
     - distro_codename: trusty
-    - domain: customerneeds.info
-    - root_dir: /home/deployer
+    - domain: domain.com
+    - home_dir: /home/deployer
+    - api_dir: /home/deployer/api/current  # when using mina deploy we need /current
+    - client_dir: /home/deployer/client
+    - auth_dir: /home/deployer/auth/current
     - postgresql_version: "9.3"
     - db_user: deployer
     - db_user_pass: deployer

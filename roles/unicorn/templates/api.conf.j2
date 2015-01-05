@@ -5,6 +5,6 @@ stop on runlevel [06]
 setuid deployer
 setgid deployer
 
-pre-start exec {{root_dir}}/api/current/bin/unicorn -D -c {{root_dir}}/api/current/config/unicorn.rb --env production
+pre-start exec {{api_dir}}/bin/unicorn -D -c {{api_dir}}/config/unicorn.rb --env production
 
-post-stop exec kill `cat {{root_dir}}/api/shared/tmp/pids/unicorn.pid`
+post-stop exec kill `cat {{api_dir}}/../shared/tmp/pids/unicorn.pid`

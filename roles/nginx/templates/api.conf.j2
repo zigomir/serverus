@@ -5,7 +5,7 @@ upstream api_unicorn {
 server {
   listen 80;
   server_name api.{{domain}};
-  root {{root_dir}}/api/current/public;
+  root {{api_dir}}/public;
 
   try_files $uri @unicorn;
 

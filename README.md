@@ -24,6 +24,12 @@ copy config yaml file
 
 ```sh
 cp server_config.SAMPLE.yml your/project/dir/server_config.yml
+cp hosts.SAMPLE your/project/dir/hosts
+cp setup.yml your/project/dir/
+
+
+cd your/project/dir/
+ln -s path/to/serverus/roles # symlink Ansible config files
 ```
 
 Run vagrant from your project.

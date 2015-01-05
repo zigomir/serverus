@@ -7,14 +7,23 @@ Vagrant.configure('2') do |config|
 
   config.vm.provider :virtualbox do |provider, override|
     CONF['forward_ports'].each do |port|
-      config.vm.network :forwarded_port, guest: port['guest'], host: port['host']
+      override.vm.network :forwarded_port, guest: port['guest'], host: port['host']
     end
 
     CONF['shared_dires'].each do |dir|
-      config.vm.synced_folder dir['guest'], dir['host'], type: 'nfs'
+      override.vm.synced_folder dir['guest'], dir['host'], type: 'nfs'
     end
 
-    config.vm.network :private_network, ip: CONF['private_ip']
+    # You need both
+    # Be sure to run development servers bound to 0.0.0.0 (rails s -b 0.0.0.0 | rackup -o 0.0.0.0)
+    override.vm.network :private_network, ip: CONF['private_ip']
+    override.vm.network :public_network,  bridge: 'en0: Wi-Fi (AirPort)'
+    # provider.gui = true # Helps a lot when problems with Vagrant occur debug
+
+    # be sure to eval $(ssh-agent)
+    # ssh-add
+    # ssh-add -l # to see if there is identity added to ssh agent
+    override.ssh.forward_agent = true
 
     provider.customize ['modifyvm', :id, '--name',   CONF['name']]
     provider.customize ['modifyvm', :id, '--memory', CONF['memory']]

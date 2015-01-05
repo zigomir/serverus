@@ -9,10 +9,10 @@ server {
     # listen 443 ssl default_server;
     listen 80 default_server;
 
-    root {{root_dir}}/client;
+    root {{client_dir}};
 
-    # ssl_certificate {{root_dir}}/keys/unified.crt;
-    # ssl_certificate_key {{root_dir}}/keys/my-private-decrypted.key;
+    # ssl_certificate {{home_dir}}/keys/unified.crt;
+    # ssl_certificate_key {{home_dir}}/keys/my-private-decrypted.key;
 
     # Be sure to serve your API calls under /api so you can proxy them straight forward
     location /api {

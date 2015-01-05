@@ -7,17 +7,21 @@
   vars:
     - distro_codename: trusty
     - domain: vagra.nt
-    - root_dir: /home/deployer
+    - home_dir: /home/vagrant
+    - api_dir: /home/vagrant/api
+    - client_dir: /home/vagrant/client
+    - auth_dir: /home/vagrant/auth
     - postgresql_version: "9.3"
-    - db_user: deployer
-    - db_user_pass: deployer
+    - db_user: vagrant
+    - db_user_pass: vagrant
     - db_user_roles: SUPERUSER
-    - db_name: db_production
+    - db_name: db_development
 
   roles:
     - common
-    - deploy-user
-    - nginx
     - ruby
-    - unicorn
     - postgres
+    # no need for local setup, uncomment for testing on Vagrant
+    # - deploy-user
+    # - nginx
+    # - unicorn
