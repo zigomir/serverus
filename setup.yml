@@ -21,6 +21,7 @@
     - common
     - ruby
     - postgres
+    - elasticsearch
     # no need for local setup, uncomment for testing on Vagrant
     # - deploy-user
     # - nginx
