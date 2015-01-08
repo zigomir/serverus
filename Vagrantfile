@@ -20,6 +20,7 @@ Vagrant.configure('2') do |config|
     override.vm.network :public_network,  bridge: 'en0: Wi-Fi (AirPort)'
     # provider.gui = true # Helps a lot when problems with Vagrant occur debug
 
+    # Greath SSH + Vagrant source: http://www.phase2technology.com/blog/running-an-ssh-agent-with-vagrant/
     # be sure to eval $(ssh-agent)
     # ssh-add
     # ssh-add -l # to see if there is identity added to ssh agent
