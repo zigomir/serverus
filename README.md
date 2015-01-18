@@ -70,8 +70,8 @@ sudo adduser deployer sudo
 visudo
 
 # Add following lines beneath %sudo   ALL=(ALL:ALL) ALL
-deployer    ALL= (root) NOPASSWD:   /sbin/start api, /sbin/stop api, /sbin/restart api, /sbin/status api
-deployer    ALL= (root) NOPASSWD:   /sbin/start auth, /sbin/stop auth, /sbin/restart auth, /sbin/status auth
+deployer  ALL=(root) NOPASSWD:  /sbin/start api, /sbin/stop api, /sbin/restart api, /sbin/status api
+deployer  ALL=(root) NOPASSWD:  /sbin/start auth, /sbin/stop auth, /sbin/restart auth, /sbin/status auth
 ```
 
 Debugging

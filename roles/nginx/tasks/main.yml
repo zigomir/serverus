@@ -4,7 +4,7 @@
   notify:
     - Start Nginx
 
-# App settings
+# App settings - TODO: select which do you need from config
 - name: Install main Nginx config
   template: src=nginx.conf dest=/etc/nginx/nginx.conf
   notify:

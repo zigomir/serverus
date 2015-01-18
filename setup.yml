@@ -6,14 +6,15 @@
   gather_facts: False
   vars:
     - distro_codename: trusty
-    - domain: vagra.nt
-    - home_dir: /home/vagrant
-    - api_dir: /home/vagrant/api
-    - client_dir: /home/vagrant/client
-    - auth_dir: /home/vagrant/auth
+    - domain: vagrant
+    - home_dir: /home/deployer
+    - api_dir: /home/deployer/api/current
+    - api_dir_public: /home/deployer/api/current/public
+    - client_dir: /home/deployer/client
+    - auth_dir: /home/deployer/auth/current
     - postgresql_version: "9.3"
-    - db_user: vagrant
-    - db_user_pass: vagrant
+    - db_user: deployer
+    - db_user_pass: deployer
     - db_user_roles: SUPERUSER
     - db_name: db_development
 
