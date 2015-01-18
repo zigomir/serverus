@@ -2,14 +2,11 @@
 - hosts: vagrant
   user: vagrant
   sudo: yes
-  # uncomment for faster provisioning
-  gather_facts: False
   vars:
     - distro_codename: trusty
     - domain: vagrant
     - home_dir: /home/deployer
     - api_dir: /home/deployer/api/current
-    - api_dir_public: /home/deployer/api/current/public
     - client_dir: /home/deployer/client
     - auth_dir: /home/deployer/auth/current
     - postgresql_version: "9.3"
@@ -23,7 +20,6 @@
     - ruby
     - postgres
     - elasticsearch
-    # no need for local setup, uncomment for testing on Vagrant
-    # - deploy-user
-    # - nginx
-    # - unicorn
+    - deploy-user
+    - nginx
+    - unicorn

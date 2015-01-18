@@ -1,0 +1,34 @@
+- name: GPG key for passenger packages
+  apt_key: keyserver=keyserver.ubuntu.com id=561F9B9CAC40B2F7
+
+- name: Passenger prerequisite packages
+  apt: pkg={{ item }}
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+
+- name: Set passenger source
+  template: src=passenger.list.j2 dest=/etc/apt/sources.list.d/passenger.list owner=root mode=0600
+
+- name: Upgrade apt packages
+  apt: upgrade=yes update_cache=yes
+
+# TODO
+# Edit /etc/nginx/nginx.conf and uncomment passenger_root and passenger_ruby.
+- name: Install Passenger
+  apt: pkg={{ item }}
+  with_items:
+    - nginx-extras
+    - passenger
+  notify:
+    - Restart Nginx
+
+- name: Set up API
+  template: src=api.conf.j2 dest=/etc/nginx/sites-enabled/api.conf
+  notify:
+    - Restart Nginx
+
+- name: Set up Auth
+  template: src=auth.conf.j2 dest=/etc/nginx/sites-enabled/auth.conf
+  notify:
+    - Restart Nginx
